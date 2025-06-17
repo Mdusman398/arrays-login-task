@@ -1,17 +1,29 @@
-let emails = +prompt("How much accounts you want to make ");
+let userInput = +prompt("How much accounts you want to make ");
 let userEmails = [];
 let userPasswords = [];
+let isFound = false;
 alert(
   "Kindly enter your email address  make sure it's in the correct format like yourname@example.com with the '@' symbol in it."
 );
-for (i = 1; i <= emails; i++) {
+for (i = 1; i <= userInput; i++) {
   let emails = prompt(`Enter the Email ${i} `);
   let password = prompt(`Enter the Password ${i}`);
-  userEmails.push(emails);
-  userPasswords.push(password);
-  alert(`Account ${i} successfully added 🎊 `);
-  console.log(userEmails);
-  console.log(userPasswords);
+
+  for (j = 0; j <= emails.length; j++) {
+    if (emails[j] === "@") {
+      userEmails.push(emails);
+      userPasswords.push(password);
+      isFound = true;
+       alert(`Account ${i} successfully added 🎊 `);
+
+      }
+    }
+    
+    console.log(userEmails);
+    console.log(userPasswords);
+  }
+if(isFound === false){
+  alert("The email you provided is not in the correct format. Please use a valid format such as example@gmail.com.")
 }
 document.write(
   " <h1> Here is your Emails : </h1> <br /> <h2> " + userEmails + " </h2> <br/>"
@@ -32,7 +44,15 @@ for (let i = 0; i <= userEmails.length; i++) {
     isCorrect = true;
     alert("Login Successfully! 😍");
     document.write(" <h1> Login Successfully! 😍 wellcome to Website </h1>");
-    document.write("<h2> You are currently logged in with this account : </h2> " + " <br> " + "<h3>" + "( " + userEmails[i] + " )" + " </h3>")
+    document.write(
+      "<h2> You are currently logged in with this account : </h2> " +
+        " <br> " +
+        "<h3>" +
+        "( " +
+        userEmails[i] +
+        " )" +
+        " </h3>"
+    );
   }
 }
 if (isCorrect === false) {
